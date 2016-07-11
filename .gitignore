@@ -1,0 +1,4 @@
+#ignore files
+demo/cfg/*
+.project
+.settings
