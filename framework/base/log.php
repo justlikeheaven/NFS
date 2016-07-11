@@ -57,8 +57,8 @@
 			if( ( $aTrc[$k]['function'] == "mysql_connect") && ( isset($aTrc[$k]['args'][2]) ) )  unset($aTrc[$k]['args'][2]);
 			$error .= 'file:'.$aTrc[$k]['file'].'; line:'.$aTrc[$k]['line'].'; function:'.$aTrc[$k]['function'].'; args:'.var_export((array)$aTrc[$k]['args'],true)."\n";
 		}
-	
-		$file = APP_ROOT.APP_DIR.'/webroot/data/logs/nfserror.php';
+	    !is_dir(APP_ROOT.APP_DIR.'/logs') && mkdir(APP_ROOT.APP_DIR.'/logs');
+		$file = APP_ROOT.APP_DIR.'/logs/nfserror.php';
 		$size = file_exists( $file) ? @filesize( $file) : 0;
 		$flag = $size < 1024*1024; //标志是否附加文件.文件控制在1M大小
 		/*$prefix = $size && $flag ? '' : "<?php (isset(\$_GET['p']) && (md5('&%$#'.\$_GET['p'].'**^')==='8b1b0c76f5190f98b1110e8fc4902bfa')) or die();?>\n";
