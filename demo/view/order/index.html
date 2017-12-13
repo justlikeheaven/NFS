@@ -1,0 +1,59 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>我的订单</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link href="http://static.nfs.com/css/reset.css" rel="stylesheet" type="text/css">
+<link href="http://static.nfs.com/css/common.css" rel="stylesheet" type="text/css">
+
+
+<script type="text/javascript" src="http://static.nfs.com/js/jquery.min.js"></script>
+
+</head>
+<body>
+<?php foreach($orders as $order){ ?>
+<div class="ddqkdiv ddqkdiv2 ddqkdiv_dd">
+	订单号<?=$order['orderno']?><span class="ddywc"><?=Order::$_status[$order['status']]?></span>
+</div>
+
+<ul class="ywc_list">
+
+	<li>
+    	<a href="/user/orderDetail?orderno=<?=$order['orderno']?>">
+            <div class="l ywc01"><img src="<!=list[i].order_product[j].product.imgs!>" /></div>
+            <div class="r ywc02">
+                <strong><!=list[i].order_product[j].product.name!></strong>
+                <p><!=list[i].order_product[j].product.merchant_name!></p>
+                
+                <p>服务时间：<!=list[i].order_product[j].dtime!></p>
+                <p>服务方式：<!=list[i].order_product[j].store_type!></p>
+                <p>服务点：<!=list[i].order_product[j].store_name!></p>
+                
+            </div>
+        </a>
+    </li>
+
+</ul>
+
+
+
+
+<div class="spzs">
+	<span>共<!=list[i].num!>件商品 实付款：</span><strong><b>&yen;</b> <!=list[i].total_price!></strong>
+</div>
+
+
+<div class="cddiv">
+	<a href="javascript:void(0)"  data-orderno="<!=list[i].orderno!>" class="cdbtn orderPay">立即支付</a>
+	<a href="javascript:void(0)" onclick="orderCancel('<!=list[i].orderno!>')" class="cdbtn">取消订单</a>
+</div>
+<?php } ?>
+</body>
+</html>
